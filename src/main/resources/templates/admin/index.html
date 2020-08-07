@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <content th:replace="contents/init1 :: head"></content>
+    <title>Trang chủ</title>
+</head>
+<body class="app sidebar-mini rtl" >
+<div id="global-loader" ></div>
+<div class="page">
+    <div class="page-main">
+        <content th:replace="contents/menu-bar :: content"></content>
+
+        <!-- Main Content-->
+        <div class="app-content ">
+            <div class="side-app">
+                <div class="main-content">
+                    <!--Top Navigator-->
+                    <content th:replace="contents/top-nav :: content"></content>
+                    <div class="container-fluid pt-8" style="min-height: 400px">
+                        TRANG CHỦ
+                    </div>
+                    <!--Footer-->
+                    <content th:replace="contents/footer :: content"></content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Back to top -->
+<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+<content th:replace="contents/init1 :: script"></content>
+</body>
+</html>
