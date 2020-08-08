@@ -1,11 +1,15 @@
-package com.vano.service;
+package com.vano.service.admin;
 
 import com.vano.entity.BlogAuthor;
 import com.vano.repository.BlogAuthorRepository;
 import com.vano.service.impl.BlogAuthorService;
+import com.vano.specification.BlogAuthorSpecification;
+import com.vano.specification.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +29,12 @@ public class BlogAuthorServiceImpl implements BlogAuthorService {
     @Override
     public Page<BlogAuthor> getList(int page, int limit) {
         return blogAuthorRepository.findAll(PageRequest.of(page - 1, limit));
+    }
+
+    public Page<BlogAuthor> findAllActive(Specification specification, Pageable pageable) {
+        specification = specification
+                .and(new BlogAuthorSpecification(new SearchCriteria("status", "!=", BlogAuthor.Status.DELETED.getValue())));
+        return blogAuthorRepository.findAll(specification, pageable);
     }
 
     @Override

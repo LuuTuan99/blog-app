@@ -1,7 +1,7 @@
 package com.vano.config;
 
 import com.vano.entity.BlogAuthor;
-import com.vano.service.BlogAuthorServiceImpl;
+import com.vano.service.admin.BlogAuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
